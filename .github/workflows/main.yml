@@ -7,11 +7,6 @@ on:
   # Triggers the workflow on push or pull request events but only for the main branch
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
-
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
   
 env:
   DOCKER_IMAGE: ghcr.io/hyoukjoo/deploy-test
@@ -20,10 +15,8 @@ env:
 jobs:
   build:
     name: Build 
-    # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - name: Checkout source code
         uses: actions/checkout@v2
