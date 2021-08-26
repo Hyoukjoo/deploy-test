@@ -1,19 +1,14 @@
-FROM node:erbium-buster-slim
+FROM NODE:16
 
-LABEL "repository"="https://github.com/teichae/github-action"
-LABEL "maintainer"="tei.chae <tei.chae@kakao.com>"
+ARG ENV
+ENV ENV=${ENV:-dev}
 
-RUN set -eux ; \
-    apt-get update -y; \
-    apt-get install --no-install-recommends -y \
-    tzdata; \
-    ln -sf /usr/share/zoneinfo/Asia/Seoul /etc/localtime; \
-    mkdir /html; \
-    npm install -g http-server
+WORKDIR /app
 
-ADD ./index.html /html
+COPY . ./
 
-WORKDIR /html
+RUN npm install
+
 EXPOSE 80
 
-CMD ["http-server", "-p80", "./"]
+CMD [ "npm", "start" ]
