@@ -1,4 +1,4 @@
-FROM NODE:16
+FROM node:16
 
 ARG ENV
 ENV ENV=${ENV:-dev}
