@@ -61,6 +61,6 @@ jobs:
           password: ${{ secrets.CR_PAT }}
       - name: Docker run
         run: |
-          docker ps -q --filter "deploy-test" | grep -q . && docker stop deploy-test && docker rm -fv deploy-test
+          docker ps -q --filter "cicd" | grep -q . && docker stop cicd && docker rm -fv cicd
           docker run -d -p 8080:8080 --name cicd --restart always ${{ env.DOCKER_IMAGE }}:${{ env.VERSION }}
   
