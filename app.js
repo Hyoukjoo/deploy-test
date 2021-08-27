@@ -7,7 +7,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/test", (req, res) => {
-  res.send("test1");
+  res.send("test2");
 });
 
 app.listen(3000, () => console.log("server run"));
