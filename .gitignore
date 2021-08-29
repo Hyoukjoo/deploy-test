@@ -4,3 +4,4 @@ data
 result
 translate.js
 .DS_Store
+.env
