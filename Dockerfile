@@ -3,12 +3,16 @@ FROM node:16
 ARG ENV
 ENV ENV=${ENV:-dev}
 
+RUN mkdir -p /app
+
 WORKDIR /app
 
-COPY . ./
+ADD . /app
+
+ENV NODE_ENV development
 
 RUN npm install
 
-EXPOSE 80
+EXPOSE 8080
 
 CMD [ "npm", "start" ]
