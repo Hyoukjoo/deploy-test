@@ -4,12 +4,15 @@ RUN apt update -y
 RUN apt install nginx -y
 RUN mkdir -p /app
 
-COPY ./nginx.conf /etc/nginx/conf.d/nginx.conf
-
 WORKDIR /app
 
 ADD . /app
 
-EXPOSE 8080
+COPY ./nginx.conf /etc/nginx/conf.d/nginx.conf
 
-CMD [ "nginx", "-g", "daemon off;" ]
+RUN npm install
+
+EXPOSE 80
+
+CMD ["npm", "start"]
+# CMD ["nginx", "-g", "daemon off;"]
