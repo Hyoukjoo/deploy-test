@@ -40,7 +40,7 @@ jobs:
         id: docker_build
         uses: docker/build-push-action@v2
         with:
-          file: ./client/Dockerfile
+          # file: ./client/Dockerfile
           builder: ${{ steps.buildx.outputs.name }}
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ env.DOCKER_IMAGE }}:${{ env.VERSION }}
@@ -58,5 +58,5 @@ jobs:
           password: ${{ secrets.CR_PAT }}
       - name: Docker run
         run: |
-          docker ps -q --filter "name=cicd" | grep -q . && docker stop cicd && docker rm -fv cicd
-          docker run -d -p 8080:8080 --name cicd --restart always ${{ env.DOCKER_IMAGE }}:${{ env.VERSION }}
+          docker ps -q --filter "name=cicd" | grep -q . && docker stop cicd && docker rm -fv cicd &&
+          docker run -d -p 80:80 --name cicd --restart always ${{ env.DOCKER_IMAGE }}:${{ env.VERSION }}

@@ -4,7 +4,7 @@ RUN apt update -y
 RUN apt install nginx -y
 RUN mkdir -p /app
 
-COPY ./client/nginx.conf /etc/nginx/conf.d/nginx.conf
+COPY ./nginx.conf /etc/nginx/conf.d/nginx.conf
 
 WORKDIR /app
 
