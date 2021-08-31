@@ -5,11 +5,11 @@ RUN apt install nginx -y
 RUN echo "daemon off;" >> /etc/nginx/nginx.conf
 RUN mkdir -p /app
 
-COPY ./nginx.conf /etc/nginx/conf.d/nginx.conf
+COPY ./client/nginx.conf /etc/nginx/conf.d/nginx.conf
 
 WORKDIR /app
 
-ADD . /app
+ADD ./client /app
 
 EXPOSE 8080
 
